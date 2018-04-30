@@ -156,8 +156,8 @@ public class ExpiryDateEditText extends StripeEditText {
                 ignoreChanges = true;
                 setText(formattedDate);
 				if(length() > 0 && cursorPosition > length()) { // index out of bounds check
-+                    cursorPosition = length();
-+                }
+                    cursorPosition = length();
+                }
                 setSelection(cursorPosition);
                 ignoreChanges = false;
             }
