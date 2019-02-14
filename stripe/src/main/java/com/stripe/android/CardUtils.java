@@ -140,6 +140,8 @@ public class CardUtils {
             return Card.DINERS_CLUB;
         } else if (StripeTextUtils.hasAnyPrefix(spacelessCardNumber, Card.PREFIXES_VISA)) {
             return Card.VISA;
+        } else if(StripeTextUtils.hasAnyPrefix(spacelessCardNumber, Card.PREFIXES_LASER)){
+            return Card.LASER;
         } else if (StripeTextUtils.hasAnyPrefix(spacelessCardNumber, Card.PREFIXES_MASTERCARD)) {
             return Card.MASTERCARD;
         } else if (StripeTextUtils.hasAnyPrefix(spacelessCardNumber, Card.PREFIXES_UNIONPAY)) {

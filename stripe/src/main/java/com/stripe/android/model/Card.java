@@ -43,6 +43,7 @@ public class Card extends StripeJsonModel implements StripePaymentSource {
             VISA,
             MASTERCARD,
             UNIONPAY,
+            LASER,
             UNKNOWN
     })
     public @interface CardBrand { }
@@ -53,6 +54,7 @@ public class Card extends StripeJsonModel implements StripePaymentSource {
     public static final String VISA = "Visa";
     public static final String MASTERCARD = "MasterCard";
     public static final String UNIONPAY = "UnionPay";
+    public static final String LASER = "Laser";
     public static final String UNKNOWN = "Unknown";
 
     public static final int CVC_LENGTH_AMERICAN_EXPRESS = 4;
@@ -81,6 +83,7 @@ public class Card extends StripeJsonModel implements StripePaymentSource {
                 put(Card.VISA, R.drawable.ic_visa);
                 put(Card.UNIONPAY, R.drawable.ic_unionpay);
                 put(Card.UNKNOWN, R.drawable.ic_unknown);
+                put(Card.LASER, R.drawable.ic_laser);
             }};
 
     // Based on http://en.wikipedia.org/wiki/Bank_card_number#Issuer_identification_number_.28IIN.29
@@ -98,6 +101,10 @@ public class Card extends StripeJsonModel implements StripePaymentSource {
         "50", "51", "52", "53", "54", "55", "67"
     };
     public static final String[] PREFIXES_UNIONPAY = {"62"};
+
+    public static final String[] PREFIXES_LASER = {
+            "6304", "6706", "6771", "6709"
+    };
 
     public static final int MAX_LENGTH_STANDARD = 16;
     public static final int MAX_LENGTH_AMERICAN_EXPRESS = 15;
