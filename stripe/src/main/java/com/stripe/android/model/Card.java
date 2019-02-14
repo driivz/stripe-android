@@ -83,7 +83,7 @@ public class Card extends StripeJsonModel implements StripePaymentSource {
                 put(Card.VISA, R.drawable.ic_visa);
                 put(Card.UNIONPAY, R.drawable.ic_unionpay);
                 put(Card.UNKNOWN, R.drawable.ic_unknown);
-                put(Card.LASER, R.drawable.ic_laser);
+                put(Card.LASER, R.drawable.ic_laser_png);
             }};
 
     // Based on http://en.wikipedia.org/wiki/Bank_card_number#Issuer_identification_number_.28IIN.29
