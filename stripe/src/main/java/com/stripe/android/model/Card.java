@@ -42,6 +42,7 @@ public class Card extends StripeJsonModel implements StripePaymentSource {
             DINERS_CLUB,
             VISA,
             MASTERCARD,
+            MAESTRO,
             UNIONPAY,
             LASER,
             UNKNOWN
@@ -53,6 +54,7 @@ public class Card extends StripeJsonModel implements StripePaymentSource {
     public static final String DINERS_CLUB = "Diners Club";
     public static final String VISA = "Visa";
     public static final String MASTERCARD = "MasterCard";
+    public static final String MAESTRO = "Maestro";
     public static final String UNIONPAY = "UnionPay";
     public static final String LASER = "Laser";
     public static final String UNKNOWN = "Unknown";
@@ -80,6 +82,7 @@ public class Card extends StripeJsonModel implements StripePaymentSource {
                 put(Card.DISCOVER, R.drawable.ic_discover);
                 put(Card.JCB, R.drawable.ic_jcb);
                 put(Card.MASTERCARD, R.drawable.ic_mastercard);
+                put(Card.MAESTRO, R.drawable.ic_maestro);
                 put(Card.VISA, R.drawable.ic_visa);
                 put(Card.UNIONPAY, R.drawable.ic_unionpay);
                 put(Card.UNKNOWN, R.drawable.ic_unknown);
@@ -88,17 +91,20 @@ public class Card extends StripeJsonModel implements StripePaymentSource {
 
     // Based on http://en.wikipedia.org/wiki/Bank_card_number#Issuer_identification_number_.28IIN.29
     public static final String[] PREFIXES_AMERICAN_EXPRESS = {"34", "37"};
-    public static final String[] PREFIXES_DISCOVER = {"60", "64", "65"};
+    public static final String[] PREFIXES_DISCOVER = {"6011","6022", "644","645","646","647","648","649", "65"};
     public static final String[] PREFIXES_JCB = {"35"};
     public static final String[] PREFIXES_DINERS_CLUB = {"300", "301", "302", "303", "304",
             "305", "309", "36", "38", "39"};
     public static final String[] PREFIXES_VISA = {"4"};
+    public static final String[] PREFIXES_MAESTRO = {
+            "50", "56","57","58", "60","61","62","63","64","65","66","67","68","69"
+    };
     public static final String[] PREFIXES_MASTERCARD = {
         "2221", "2222", "2223", "2224", "2225", "2226", "2227", "2228", "2229",
         "223", "224", "225", "226", "227", "228", "229",
         "23", "24", "25", "26",
         "270", "271", "2720",
-        "50", "51", "52", "53", "54", "55", "67"
+            "51", "52", "53", "54", "55"
     };
     public static final String[] PREFIXES_UNIONPAY = {"62"};
 

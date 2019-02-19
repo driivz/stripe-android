@@ -134,6 +134,8 @@ public class CardUtils {
             return Card.AMERICAN_EXPRESS;
         } else if (StripeTextUtils.hasAnyPrefix(spacelessCardNumber, Card.PREFIXES_DISCOVER)) {
             return Card.DISCOVER;
+        } else if (StripeTextUtils.hasAnyPrefix(spacelessCardNumber, Card.PREFIXES_MAESTRO)){
+            return Card.MAESTRO;
         } else if (StripeTextUtils.hasAnyPrefix(spacelessCardNumber, Card.PREFIXES_JCB)) {
             return Card.JCB;
         } else if (StripeTextUtils.hasAnyPrefix(spacelessCardNumber, Card.PREFIXES_DINERS_CLUB)) {
