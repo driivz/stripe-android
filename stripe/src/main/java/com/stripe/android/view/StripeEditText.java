@@ -19,6 +19,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputConnectionWrapper;
 
+import com.stripe.android.CopyActionBlockListener;
 import com.stripe.android.R;
 
 import static com.stripe.android.view.ViewUtils.isColorDark;
@@ -42,7 +43,7 @@ public class StripeEditText extends TextInputEditText {
     private Handler mHandler;
     private String mErrorMessage;
     private ErrorMessageListener mErrorMessageListener;
-
+    private CopyActionBlockListener onCopyActionBlocked;
     public StripeEditText(Context context) {
         super(context);
         initView();
@@ -56,6 +57,10 @@ public class StripeEditText extends TextInputEditText {
     public StripeEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView();
+    }
+
+    public void setOnCopyActionBlocked(CopyActionBlockListener onCopyActionBlocked) {
+        this.onCopyActionBlocked = onCopyActionBlocked;
     }
 
     @Nullable
@@ -241,6 +246,19 @@ public class StripeEditText extends TextInputEditText {
                 return false;
             }
         });
+    }
+
+    @Override
+    public boolean onTextContextMenuItem(int id) {
+        switch (id){
+            case android.R.id.copy:
+                if(onCopyActionBlocked != null) {
+                    onCopyActionBlocked.onCopyBlock();
+                }
+                return false;
+
+        }
+        return super.onTextContextMenuItem(id);
     }
 
     interface DeleteEmptyListener {
