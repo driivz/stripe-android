@@ -11,9 +11,9 @@ import android.util.AttributeSet;
 import android.widget.EditText;
 
 import com.stripe.android.CardUtils;
+import com.stripe.android.CopyActionBlockListener;
 import com.stripe.android.StripeTextUtils;
 import com.stripe.android.model.Card;
-import com.stripe.android.CopyActionBlockListener;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -255,7 +255,7 @@ public class CardNumberEditText extends StripeEditText {
         switch (id){
             case android.R.id.copy:
                 if(onCopyActionBlocked != null) {
-                    onCopyActionBlocked.onCopyActionBlocked();
+                    onCopyActionBlocked.onCopyBlock();
                 }
                 return false;
 
