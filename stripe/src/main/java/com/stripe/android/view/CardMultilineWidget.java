@@ -24,6 +24,7 @@ import android.widget.LinearLayout;
 import com.stripe.android.CardUtils;
 import com.stripe.android.R;
 import com.stripe.android.model.Card;
+import com.stripe.android.CopyActionBlockListener;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -583,4 +584,7 @@ public class CardMultilineWidget extends LinearLayout {
         mCardNumberEditText.setCompoundDrawables(compatIcon, null, null, null);
     }
 
+    public void setOnCopyActionBlockListener(CopyActionBlockListener listener){
+        mCardNumberEditText.setOnCopyActionBlocked(listener);
+    }
 }
