@@ -262,7 +262,7 @@ public class CardNumberEditText extends StripeEditText {
         }
         return super.onTextContextMenuItem(id);
     }
-    private void setOnCopyActionBlocked(CopyActionBlockListener listener){
+    public void setOnCopyActionBlocked(CopyActionBlockListener listener){
         this.onCopyActionBlocked = listener;
     }
 
