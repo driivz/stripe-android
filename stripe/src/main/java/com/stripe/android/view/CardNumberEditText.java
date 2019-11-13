@@ -13,6 +13,7 @@ import android.widget.EditText;
 import com.stripe.android.CardUtils;
 import com.stripe.android.StripeTextUtils;
 import com.stripe.android.model.Card;
+import com.stripe.android.CopyActionBlockListener;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -42,6 +43,7 @@ public class CardNumberEditText extends StripeEditText {
     private int mLengthMax = 19;
     private boolean mIgnoreChanges = false;
     private boolean mIsCardNumberValid = false;
+    private CopyActionBlockListener onCopyActionBlocked;
 
     public CardNumberEditText(Context context) {
         super(context);
@@ -248,6 +250,22 @@ public class CardNumberEditText extends StripeEditText {
         updateCardBrand(CardUtils.getPossibleCardType(partialNumber));
     }
 
+    @Override
+    public boolean onTextContextMenuItem(int id) {
+        switch (id){
+            case android.R.id.copy:
+                if(onCopyActionBlocked != null) {
+                    onCopyActionBlocked.onCopyActionBlocked();
+                }
+                return false;
+
+        }
+        return super.onTextContextMenuItem(id);
+    }
+    private void setOnCopyActionBlocked(CopyActionBlockListener listener){
+        this.onCopyActionBlocked = listener;
+    }
+
     private static int getLengthForBrand(@Card.CardBrand String cardBrand) {
         if (Card.AMERICAN_EXPRESS.equals(cardBrand) || Card.DINERS_CLUB.equals(cardBrand)) {
             return MAX_LENGTH_AMEX_DINERS;
@@ -263,4 +281,6 @@ public class CardNumberEditText extends StripeEditText {
     interface CardBrandChangeListener {
         void onCardBrandChanged(@NonNull @Card.CardBrand String brand);
     }
+
+
 }
